@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// Основа для запуска конкурентного выполнения
 func ReadFile(path, filename string, export chan interface{}) {
 	defer close(export)
 	file, err := os.Open(path + filename)

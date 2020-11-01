@@ -6,6 +6,10 @@ import (
 	"sort"
 )
 
+/*
+1. Реализовать параллельное вычисление максимального и минимального элементов
+одномерного массива.
+*/
 func GetMinMaxElem(array []int, threads int) (min, max int) {
 	dataChan := make(chan interface{})
 	maxSize := len(array) / 2

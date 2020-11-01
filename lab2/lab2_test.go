@@ -9,6 +9,7 @@ import (
 	"testing"
 )
 
+// #9
 func getCountWords(length int, filename string, path string) (int, error) {
 	data, err := ioutil.ReadFile(path + filename)
 	if err != nil {
@@ -32,6 +33,7 @@ func TestGetCountWords(t *testing.T) {
 	}
 }
 
+// #5
 func getWordsWithNLen(length int, filename string, path string) ([]string, error) {
 	data, err := ioutil.ReadFile(path + filename)
 	if err != nil {
@@ -55,6 +57,7 @@ func TestGetWords(t *testing.T) {
 	}
 }
 
+// #8
 func getWordWithMaxLen(filename string, path string) (string, error) {
 	data, err := ioutil.ReadFile(path + filename)
 	if err != nil {
@@ -80,24 +83,4 @@ func TestGetMaxLen(t *testing.T) {
 	//if length != 7{
 	//	t.Fatal("WAIT : 7","EXPECT :",length)
 	//}
-}
-
-func getWordSoglN(length int, filename string, path string) ([]string, error) {
-	data, err := ioutil.ReadFile(path + filename)
-	if err != nil {
-		return []string{}, err
-	}
-	lenStr := strconv.Itoa(length)
-	sogl := `[qwrtpsdfghjklzxcvbnm]{1}`
-	pattern := `\b(*` + sogl + `*){` + lenStr + `}\b`
-	re := regexp.MustCompile(pattern)
-	array := re.FindAllString(string(data), -1)
-
-	return array, nil
-}
-func TestGetSogl(t *testing.T) {
-	_, err := getWordSoglN(4, "GCW.txt", "TEXTS/")
-	if err != nil {
-		t.Fatal()
-	}
 }

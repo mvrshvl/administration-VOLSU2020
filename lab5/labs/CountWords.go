@@ -6,6 +6,9 @@ import (
 	"regexp"
 )
 
+/*
+7. Реализовать параллельное вычисление количества слов в заданном тексте.
+*/
 func GetCountWords(path, name string) int {
 	goFunc := func(data interface{}, resultChan chan interface{}) {
 		dataString := common.InterfaceToString(data)

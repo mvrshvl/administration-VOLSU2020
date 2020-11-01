@@ -6,8 +6,9 @@ import (
 	"testing"
 )
 
+// 2 представления интерфейсов
+
 func TestGeometry(t *testing.T) {
-	//неявно
 	triangle := geometry.NewTriangle(0, 0, 1, 1, 2, 0)
 	square := geometry.NewSquare(0, 0, 0, 1, 1, 1, 1, 0)
 	geometry.Area(triangle)

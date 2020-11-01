@@ -7,22 +7,7 @@ import (
 	"testing"
 )
 
-func listDirByWalk(path string) {
-
-	filepath.Walk(path, func(wPath string, info os.FileInfo, err error) error {
-
-		if wPath == path {
-			return nil
-		}
-
-		if info.IsDir() {
-			fmt.Printf("FOLDER - [%s]\n", wPath)
-		} else {
-			fmt.Printf("FILE - [%s]\n", wPath)
-		}
-		return nil
-	})
-}
+// 1. Найти файл максимального размера.
 func GetMostLargeFile(path string) {
 	type relustStruct struct {
 		name     string
@@ -78,6 +63,8 @@ func GetFiles(path string, f func(f *os.File)) {
 func TestGetMostLargeFile(t *testing.T) {
 	GetMostLargeFile(".")
 }
+
+//2. Построить список имен файлов, размер которых находится в заданном диапазоне.
 func GetFilesWithNSize(path string, from, to int64) {
 	f := func(file *os.File) {
 		fi, err := file.Stat()

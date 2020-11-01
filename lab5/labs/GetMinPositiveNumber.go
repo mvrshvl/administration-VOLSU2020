@@ -6,6 +6,10 @@ import (
 	"sort"
 )
 
+/* 9
+Реализовать параллельный поиск минимального положительного элемента числовой
+последовательности.
+*/
 func GetMinPositiveNumber(array []int, threads int) (min int) {
 	dataChan := make(chan interface{})
 	maxSize := len(array) / 2

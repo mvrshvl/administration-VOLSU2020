@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+// #1
 func sumElem(array []int) int {
 	return len(array)
 }
@@ -15,6 +16,8 @@ func TestSumElem(t *testing.T) {
 		t.Fatal()
 	}
 }
+
+// #2
 func sumPositiveNegative(array []int) (positive int, negative int) {
 	for _, elem := range array {
 		if elem < 0 {
@@ -34,6 +37,8 @@ func TestSumPosNeg(t *testing.T) {
 		t.Fatal()
 	}
 }
+
+// #4,5
 func getMin(array []int, k int) []int {
 	sort.Ints(array)
 	return array[:k]

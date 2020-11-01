@@ -1,7 +1,12 @@
 package lab3
 
-import "testing"
+import (
+	"fmt"
+	"sort"
+	"testing"
+)
 
+// #2 Почтовые адреса
 func TestPost(t *testing.T) {
 	cityName := "MOSCOW"
 	streetName := "KRASNAYA"
@@ -33,12 +38,12 @@ func TestPost(t *testing.T) {
 		Name: cityName,
 	}
 
+	// Добавление
 	err := house.AddApartment(apartment)
 	err = street.AddHouse(house)
 	err = city.AddStreet(street)
 	post := newPost()
 	post.AddCity(city)
-
 	err = post.AddPerson(cityName, streetName, houseNumber, numApartment, fio, numbers)
 
 	p1, err := post.toString()
@@ -46,6 +51,7 @@ func TestPost(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	//выгрузка/загрузка
 	err = post.Export("myPost", "JSON/")
 	if err != nil {
 		t.Fatal(err)
@@ -67,20 +73,19 @@ func TestPost(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	// извлечение объекта человека
 	if person.Numbers != numbers {
-
 		t.Fatal()
 	}
-
+	//Извлечение полной информации о человеке
 	fullInfo, err := post.GetFullInfoByPerson(fio, numbers)
 	if err != nil {
 		t.Fatal(err)
 	}
-
 	if fullInfo.City.Name != cityName {
 		t.Fatal()
 	}
-
+	//Подсчет числа адресов
 	sumPeople, err := post.GetSum(cityName)
 	if err != nil {
 		t.Fatal(err)
@@ -88,5 +93,15 @@ func TestPost(t *testing.T) {
 	if sumPeople != 1 {
 		t.Fatal()
 	}
-
+	// Удаление адресата
+	err = post.RemovePerson(cityName, streetName, houseNumber, numApartment, fio)
+}
+func Test1(t *testing.T) {
+	data := []float64{1, 2, 0}
+	sortt(data)
+	fmt.Print(data)
+}
+func sortt(data []float64) {
+	sort.Float64s(data)
+	fmt.Print(data)
 }
