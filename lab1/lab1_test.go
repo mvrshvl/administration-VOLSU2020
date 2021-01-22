@@ -1,6 +1,7 @@
 package lab1
 
 import (
+	"fmt"
 	"reflect"
 	"sort"
 	"testing"
@@ -15,6 +16,8 @@ func TestSumElem(t *testing.T) {
 	if sum != 4 {
 		t.Fatal()
 	}
+
+	fmt.Println("a")
 }
 
 // #2
