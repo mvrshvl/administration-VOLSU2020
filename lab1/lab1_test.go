@@ -17,7 +17,7 @@ func TestSumElem(t *testing.T) {
 		t.Fatal()
 	}
 
-	fmt.Println("a")
+	fmt.Println("aa")
 }
 
 // #2
